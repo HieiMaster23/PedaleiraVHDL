@@ -1,0 +1,37 @@
+entity adc is
+    port (
+        clk : in std_logic;
+        reset : in std_logic;
+        input_signal : in std_logic;
+        output_data : out std_logic_vector(7 downto 0)
+    );
+end adc;
+
+architecture Behavioral of adc is
+
+    signal sample_counter : integer range 0 to 4095 := 0;
+    signal input_buffer : std_logic_vector(11 downto 0) := (others => '0');
+    signal sample_done : std_logic := '0';
+
+begin
+
+    process (clk, reset)
+    begin
+        if reset = '1' then
+            sample_counter <= 0;
+            input_buffer <= (others => '0');
+            sample_done <= '0';
+        elsif rising_edge(clk) then
+            if sample_counter = 0 then
+                input_buffer <= input_signal;
+                sample_done <= '1';
+            else
+                sample_done <= '0';
+            end if;
+            sample_counter <= sample_counter + 1;
+        end if;
+    end process;
+
+    output_data <= input_buffer when sample_done = '1' else (others => '0');
+
+end Behavioral;

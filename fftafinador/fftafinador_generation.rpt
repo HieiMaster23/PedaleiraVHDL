@@ -1,0 +1,40 @@
+Info: Starting: Create block symbol file (.bsf)
+Info: qsys-generate C:\Users\Rafael\Documents\PedaleiraVHDL\fftafinador.qsys --block-symbol-file --output-directory=C:\Users\Rafael\Documents\PedaleiraVHDL\fftafinador --family="Cyclone IV E" --part=EP4CE115F29I8L
+Progress: Loading PedaleiraVHDL/fftafinador.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 22.1]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: fftafinador.fft_ii_0: Radix-2 digit reverse implied
+Info: qsys-generate succeeded.
+Info: Finished: Create block symbol file (.bsf)
+Info: 
+Info: Starting: Create HDL design files for synthesis
+Info: qsys-generate C:\Users\Rafael\Documents\PedaleiraVHDL\fftafinador.qsys --synthesis=VHDL --output-directory=C:\Users\Rafael\Documents\PedaleiraVHDL\fftafinador\synthesis --family="Cyclone IV E" --part=EP4CE115F29I8L
+Progress: Loading PedaleiraVHDL/fftafinador.qsys
+Progress: Reading input file
+Progress: Adding fft_ii_0 [altera_fft_ii 22.1]
+Progress: Parameterizing module fft_ii_0
+Progress: Building connections
+Progress: Parameterizing connections
+Progress: Validating
+Progress: Done reading input file
+Info: fftafinador.fft_ii_0: Radix-2 digit reverse implied
+Info: fftafinador: Generating fftafinador "fftafinador" for QUARTUS_SYNTH
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twr4.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twi5.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twi1.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twi2.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twr5.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twr1.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twi3.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twr2.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twi4.hex
+Info: fft_ii_0: --- add file: fftafinador_fft_ii_0_opt_twr3.hex
+Info: fft_ii_0: "fftafinador" instantiated altera_fft_ii "fft_ii_0"
+Info: fftafinador: Done "fftafinador" with 2 modules, 52 files
+Info: qsys-generate succeeded.
+Info: Finished: Create HDL design files for synthesis

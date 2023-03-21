@@ -1,0 +1,17 @@
+
+State Machine - |pedaleira|wm8731_control:wm8731_inst|state
+Name state.wait_ack state.send_config state.idle 
+state.idle 0 0 0 
+state.send_config 0 1 1 
+state.wait_ack 1 0 1 
+
+State Machine - |pedaleira|i2c_master:i2c_inst|state
+Name state.receive_ack state.send_ack state.read_data state.write_data state.write_addr state.stop state.start state.idle 
+state.idle 0 0 0 0 0 0 0 0 
+state.start 0 0 0 0 0 0 1 1 
+state.stop 0 0 0 0 0 1 0 1 
+state.write_addr 0 0 0 0 1 0 0 1 
+state.write_data 0 0 0 1 0 0 0 1 
+state.read_data 0 0 1 0 0 0 0 1 
+state.send_ack 0 1 0 0 0 0 0 1 
+state.receive_ack 1 0 0 0 0 0 0 1 
