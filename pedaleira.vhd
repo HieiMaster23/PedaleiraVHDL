@@ -3,17 +3,19 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
+
 entity pedaleira is
     Port (
-        clk         : in std_logic;
-        reset       : in std_logic;
-        sda         : inout std_logic;
-        scl         : out std_logic;
-        bclk        : in std_logic;
-        wclk        : in std_logic;
-        sdata       : in std_logic;
-        audio_data  : out std_logic_vector(15 downto 0);
-        data_valid  : out std_logic
+        clk          : in std_logic;
+        reset        : in std_logic;
+        AUD_ADCLRCK  : in std_logic; -- Audio CODEC ADC LR Clock 3.3V
+        AUD_ADCDAT   : in std_logic; -- Audio CODEC ADC Data 3.3V
+        AUD_DACLRCK  : in std_logic; -- Audio CODEC DAC LR Clock 3.3V
+        AUD_DACDAT   : out std_logic; -- Audio CODEC DAC Data 3.3V
+        AUD_XCK      : in std_logic; -- Audio CODEC Chip Clock 3.3V
+        AUD_BCLK     : in std_logic; -- Audio CODEC Bit-Stream Clock 3.3V
+        I2C_SCLK     : out std_logic; -- I2C Clock 3.3V
+        I2C_SDAT     : inout std_logic -- I2C Data 3.3V
     );
 end pedaleira;
 
@@ -30,8 +32,8 @@ begin
         port map (
             clk       => clk,
             reset     => reset,
-            sda       => sda,
-            scl       => scl,
+            sda       => I2C_SDAT,
+            scl       => I2C_SCLK,
             i2c_start => i2c_start,
             i2c_stop  => i2c_stop,
             i2c_read  => '0',
@@ -46,11 +48,11 @@ begin
         port map (
             clk        => clk,
             reset      => reset,
-            bclk       => bclk,
-            wclk       => wclk,
-            sdata      => sdata,
-            audio_data => audio_data,
-            data_valid => data_valid
+            bclk       => AUD_BCLK,
+            wclk       => AUD_DACLRCK, -- usar DAC LR Clock para wclk
+            sdata      => AUD_ADCDAT, -- usar ADC Data para sdata
+            audio_data => open, -- não está sendo usado no módulo i2s_receiver, deixar como open
+            data_valid => open -- não está sendo usado no módulo i2s_receiver, deixar como open
         );
 
     wm8731_inst: entity work.wm8731_control

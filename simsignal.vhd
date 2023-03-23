@@ -24,7 +24,6 @@ begin
         port map (
             clk        => clk,
             reset      => reset,
-            sda        => sda,
             scl        => scl,
             bclk       => bclk,
             wclk       => wclk,
